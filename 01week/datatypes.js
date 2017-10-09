@@ -4,6 +4,7 @@
 let displayDate = function (){
   let date = new Date();
   console.log(date);
+  console.log(typeof date);
 };
 
 displayDate();
@@ -13,6 +14,7 @@ let numtoString = function(){
   let x = 5;
   let string = x.toString();
   console.log(string);
+  console.log(typeof string);
 };
 
 numtoString();
@@ -21,6 +23,7 @@ numtoString();
 let turnt = function(x){
   let y = parseInt(x);
   console.log(y);
+  console.log(typeof y);
 };
 
 turnt('9');
@@ -29,6 +32,7 @@ turnt('9');
 let extra = function(a,b){
   let c = a + b;
   console.log(c);
+  console.log(typeof c);
 };
 
 extra(9,2);
