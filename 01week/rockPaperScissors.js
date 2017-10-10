@@ -9,32 +9,36 @@ const rl = readline.createInterface({
 
 
 function rockPaperScissors(hand1, hand2) {
-  if(hand1 === 'rock' && hand2 === 'scissors'){
-      return 'Player One Wins!';
+  let first = hand1.toLowerCase().trim();
+  let second = hand2.toLowerCase().trim();
+
+  if(first === 'rock' && second === 'scissors'){
+      return 'Hand one wins!';
     }
-  if(hand1 === 'rock' && hand2 === 'paper'){
-      return 'Player Two Wins!';
+  if(first === 'rock' && second === 'paper'){
+      return 'Hand two wins!';
     }
-  if(hand1 === 'rock' && hand2 === 'rock'){
-      return 'Tied Game! Everyone Wins!';
+  if(first === 'rock' && second === 'rock'){
+      return "It's a tie!";
     }
-  if(hand1 === 'paper' && hand2 === 'rock'){
-      return 'Player One Wins!';
+  if(first === 'paper' && second === 'rock'){
+      return 'Hand one wins!';
     }
-  if(hand1 === 'paper' && hand2 === 'scissors'){
-      return 'Player Two Wins!';
+  if(first === 'paper' && second === 'scissors'){
+      return 'Hand two wins!';
     }
-  if(hand1 === 'paper' && hand2 === 'paper'){
-      return 'Tied Game! Everyone Wins!';
+  if(first === 'paper' && second === 'paper'){
+      return "It's a tie!";
     }
-  if(hand1 === 'scissors' && hand2 === 'rock'){
-      return 'Player Two Wins!';
+  if(first === 'scissors' && second === 'rock'){
+      return 'Hand two wins!';
     }
-  if(hand1 === 'scissors' && hand2 === 'paper'){
-      return 'Player One Wins!';
+  if(first === 'scissors' && second === 'paper'){
+      return 'Hand one wins!';
     }
-  if(hand1 === 'scissors' && hand2 === 'scissors'){
-      return 'Tied Game! Everyone Wins!';
+  if(first === 'scissors' && second === 'scissors'){
+      return "It's a tie!";
+    }
 }
 
 function getPrompt() {
