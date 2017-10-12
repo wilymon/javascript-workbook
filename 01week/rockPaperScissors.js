@@ -56,7 +56,7 @@ if (typeof describe === 'function') {
 
   describe('#rockPaperScissors()', () => {
     it('should detect a tie', () => {
-      assert.equal(rockPaperScissors('rock', 'rock'), "It's a tie!");
+      assert.equal(rockPaperScissors('rock', 'r ock'), "It's a tie!");
       assert.equal(rockPaperScissors('paper', 'paper'), "It's a tie!");
       assert.equal(rockPaperScissors('scissors', 'scissors'), "It's a tie!");
     });
