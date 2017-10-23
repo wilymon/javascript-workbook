@@ -12,7 +12,7 @@ let board = [
   [' ', ' ', ' ']
 ];
 
-let playerTurn = 'X';
+let turn = 0;
 
 function printBoard() {
   console.log('   0  1  2');
@@ -24,38 +24,102 @@ function printBoard() {
 }
 
 function horizontalWin() {
-  // Your code here
+  if (board[0][0]==board[0][1] && board[0][1]==board[0][2] && board[0][0]!=(' ')){
+    return true;
+  }
+  if (board[1][0]==board[1][1] && board[1][1]==board[1][2] && board[1][0]!=(' ')){
+    return true;
+  }
+  if (board[2][0]==board[2][1] && board[2][1]==board[2][2] && board[2][0]!=(' ')){
+    return true;
+  }
 }
 
 function verticalWin() {
-  // Your code here
+  if (board[0][0]==board[1][0] && board[1][0]==board[2][0] && board[0][0]!=(' ')){
+    return true;
+  }
+  if (board[0][1]==board[1][1] && board[1][1]==board[2][1] && board[0][1]!=(' ')){
+    return true;
+  }
+  if (board[0][2]==board[1][2] && board[1][2]==board[2][2] && board[0][2]!=(' ')){
+    return true;
+  }
 }
 
 function diagonalWin() {
-  // Your code here
+  if (board[0][0]==board[1][1] && board[1][1]==board[2][2] && board[0][0]!=(' ')){
+    return true;
+  }
+  if (board[0][2]==board[1][1] && board[1][1]==board[2][0] && board[0][2]!=(' ')){
+    return true;
+  }
 }
 
 function checkForWin() {
-  // Your code here
+  if (horizontalWin() === true){
+    return true;
+  }
+  if (verticalWin() === true){
+    return true;
+  }
+  if (diagonalWin() === true){
+    return true;
+  }
 }
 
+
 function ticTacToe(row, column) {
-  // Your code here
+let rowGood = row.trim();
+let columnGood = column.trim();
+
+if (board[rowGood][columnGood]==' '){
+  if ((turn===0) || (turn%2===0)){
+    board[rowGood][columnGood]='X';
+    turn++;
+  } else {
+    board[rowGood][columnGood]='O'
+    turn++;
+  }
+  let WHY = checkForWin()
+
+  if (WHY == true) {
+    if ((turn===0) || (turn%2===0)){
+      console.log("Player O Wins!");
+    } else {
+      console.log("Player X Wins!");
+    }
+    board = [
+      [' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']
+    ];
+    turn=0;
+  }
+} else {
+  console.log("INVALID ENTRY! Please choose an empty row & column...")
+}
 }
 
 function getPrompt() {
   printBoard();
-  console.log("It's Player " + playerTurn + "'s turn.");
+  if ((turn==0) || (turn%2==0)){
+    console.log("It's Player X's turn.");
+  } else {
+    console.log("It's Player O's turn.");
+    }
   rl.question('row: ', (row) => {
     rl.question('column: ', (column) => {
+  if ((row=='0' || row=='1' || row=='2') && (column=='0' || column=='1' || column=='2')){
       ticTacToe(row, column);
+    } else {
+      console.log("INVALID ENTRY! Please enter a number from 0 to 2, with no spaces...")
+    }
       getPrompt();
     });
   });
 
 }
-
-
 
 // Tests
 
