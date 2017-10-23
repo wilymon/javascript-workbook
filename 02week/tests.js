@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 });
 
 
-function rockPaperScissors(hand1, hand2) {
+function rockPaperScissors(hand1, hand2) { 
   let first = hand1.toLowerCase().trim();
   let second = hand2.toLowerCase().trim();
 
