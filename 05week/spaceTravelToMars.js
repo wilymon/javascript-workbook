@@ -11,6 +11,51 @@ let jobTypes = {
 
 // Your code here
 
+class Ship {
+  constructor(name, type, ability){
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crewMems = [];
+  }
+    missionStatement() {
+      for (var x = 0; x < this.crewMems.length; x++) {
+        let crewPerson = this.crewMems[x].job;
+        if (jobTypes[crewPerson] === this.type) {
+          return this.ability;
+          } else {
+          return "Can't perform a mission yet.";
+          }
+      }
+  }
+}
+
+class CrewMember {
+  constructor(name, job, specialSkill, ship){
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = null;
+  }
+
+  enterShip (X){
+    X.crewMems.push(this);
+    this.ship = X;
+  }
+}
+
+let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+
+
+crewMember1.enterShip(mav);
+mav.missionStatement();
+
+console.log(crewMember1);
+console.log(mav);
+
+
+
 //tests
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
@@ -27,8 +72,8 @@ if (typeof describe === 'function'){
       let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
       crewMember1.enterShip(mav);
       assert.equal(crewMember1.ship, mav);
-      assert.equal(mav.crew.length, 1);
-      assert.equal(mav.crew[0], crewMember1);
+      assert.equal(mav.crewMems.length, 1);
+      assert.equal(mav.crewMems[0], crewMember1);
     });
   });
 
@@ -38,7 +83,7 @@ if (typeof describe === 'function'){
       assert.equal(mav.name, 'Mars Ascent Vehicle');
       assert.equal(mav.type, 'MAV');
       assert.equal(mav.ability, 'Ascend into low orbit');
-      assert.equal(mav.crew.length, 0);
+      assert.equal(mav.crewMems.length, 0);
     });
 
     it('can return a mission statement correctly', function(){
